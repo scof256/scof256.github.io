@@ -1,0 +1,37 @@
+/* styles.css - Responsive overrides and base styles for the portfolio
+   This file ensures the page is responsive on all devices and meets the assignment
+   requirements (external CSS + responsive layout).
+*/
+
+/* Basic resets and image responsiveness */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* Header nav: wrap on small screens, show separators only on >=640px */
+.nav-menu { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem; }
+.nav-menu > li { list-style: none; }
+.nav-menu > li > span { display: none; }
+@media (min-width: 640px) {
+  .nav-menu { justify-content: flex-start; }
+  .nav-menu > li > span { display: inline-block; opacity: .7; }
+}
+
+/* Schools grid: auto-fit number of columns based on available width */
+.schools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+
+/* School cards: subtle hover for clarity even without Tailwind */
+.school-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; text-align: center; transition: transform .2s ease, box-shadow .2s ease; }
+.school-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -12px rgba(2,6,23,0.25); }
+
+/* Responsive spacing for sections in case Tailwind fails to load */
+section { margin-bottom: 2rem; }
+
+/* Ensure headings remain legible on all displays */
+h1, h2 { word-break: break-word; }
+
+/* Small devices: center header stack */
+@media (max-width: 640px) {
+  header .flex { gap: 12px; }
+}
